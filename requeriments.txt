@@ -1,0 +1,6 @@
+torch
+diffusers
+transformers
+accelerate
+slack_bolt
+python-dotenv
