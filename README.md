@@ -21,7 +21,7 @@ You need to setup a `.env` file with this information:
 
 ## Model provisioning
 
-Just head to huggingface.co and download the model and put it in the `model` folder defined at `MODEL_PATH`.
+Just head to [huggingface.co](https://huggingface.co) and download the model and put it in the `model` folder defined at `MODEL_PATH`.
 
 This proof of concept uses the `stabilityai/stable-diffusion-2-1` model.
 
