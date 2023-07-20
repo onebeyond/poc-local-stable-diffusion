@@ -36,4 +36,4 @@ pip install -r requirements.txt
 python main.py
 ```
 
-> :alert: You need a capable CUDA GPU to run this model, if you don't have one, you can use Google Colab/Azure AI or any cloud provided GPU instance to run it.
+> ⚠️ You need a capable CUDA GPU to run this model, if you don't have one, you can use Google Colab/Azure AI or any cloud provided GPU instance to run it.
