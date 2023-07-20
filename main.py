@@ -5,29 +5,29 @@ from diffusers import StableDiffusionPipeline
 import torch
 import os
 
-from dotenv import dotenv_values
-env_vars = dotenv_values('.env')
+from dotenv import load_dotenv
+load_dotenv()
 
-if "MODEL_PATH" not in env_vars:
-    print("Please set the MODEL_PATH environment variable to the path of the model you want to use.")
-    exit(1)
 
-if "SLACK_BOT_AUTH_TOKEN" not in env_vars:
-    print("Please set the SLACK_BOT_AUTH_TOKEN environment variable to the token of the Slack bot you want to use.")
-    exit(1)
-
-if "SLACK_APP_AUTH_TOKEN" not in env_vars:
-    print("Please set the SLACK_APP_AUTH_TOKEN environment variable to the token of the Slack app you want to use.")
-    exit(1)
-
-model_id = env_vars["MODEL_PATH"]
-bot_user_id = env_vars["SLACK_BOT_USER_ID"]
-
-if "SLACK_BOT_USER_ID" not in env_vars:
+if "SLACK_BOT_USER_ID" not in os.environ:
     print("Please set the SLACK_BOT_USER_ID environment variable to the user ID of the Slack bot you want to use.")
     exit(1)
 
-app = App(token=env_vars["SLACK_BOT_AUTH_TOKEN"])
+if "MODEL_PATH" not in os.environ:
+    print("Please set the MODEL_PATH environment variable to the path of the model you want to use.")
+    exit(1)
+
+if "SLACK_BOT_AUTH_TOKEN" not in os.environ:
+    print("Please set the SLACK_BOT_AUTH_TOKEN environment variable to the token of the Slack bot you want to use.")
+    exit(1)
+
+if "SLACK_APP_AUTH_TOKEN" not in os.environ:
+    print("Please set the SLACK_APP_AUTH_TOKEN environment variable to the token of the Slack app you want to use.")
+    exit(1)
+
+model_id = os.environ["MODEL_PATH"]
+bot_user_id = os.environ["SLACK_BOT_USER_ID"]
+app = App(token=os.environ["SLACK_BOT_AUTH_TOKEN"])
 
 
 @app.event("app_mention")
@@ -58,4 +58,4 @@ def ask_for_introduction(client, event, ack):
 
 
 if __name__ == "__main__":
-    SocketModeHandler(app, env_vars["SLACK_APP_AUTH_TOKEN"]).start()
+    SocketModeHandler(app, os.environ["SLACK_APP_AUTH_TOKEN"]).start()
